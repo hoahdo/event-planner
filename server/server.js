@@ -47,8 +47,22 @@ app.delete("/delete/:id", (req, res) => {
 	// console.log(req.params);
 	Post.findByIdAndDelete({ _id: req.params.id })
 		.then()
-        .catch((error) => console.log(error));
-    
+		.catch((error) => console.log(error));
+});
+
+app.put("/update/:id", (req, res) => {
+	console.log(req.params);
+	console.log(req.body);
+	Post.findByIdAndUpdate(
+		{ _id: req.params.id },
+		{
+			event: req.body.event,
+			date: req.body.date,
+			description: req.body.description,
+		}
+	)
+		.then()
+		.catch();
 });
 
 app.listen(PORT, () => {
