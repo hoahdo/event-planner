@@ -18,10 +18,10 @@ function CreateEvent() {
 				[name]: value,
 			};
 		});
-    };
-    
+	};
+
 	const dateInputChange = (event) => {
-        const { name, value } = event.target;
+		const { name, value } = event.target;
 		setPost((prev) => {
 			return {
 				...prev,
@@ -33,43 +33,44 @@ function CreateEvent() {
 	const createEvent = (event) => {
 		event.preventDefault();
 		axios
-            .post("http://localhost:3001/create", post)
-            .then((res)=> console.log(res))
-            .catch((error) => console.log(error));
+			.post("http://localhost:3001/create", post)
+			.then((res) => console.log(res))
+			.catch((error) => console.log(error));
 
 		navigate("events");
-    };
-
+	};
 
 	return (
 		<div>
-			<h1 className="">Create Event</h1>
-			<form>
-				<input
+			<h1>Create Event</h1>
+			{/* <button onClick={() => navigate("/")}>BACK</button> */}
+			<form className="form-container">
+                <input
+                    className="input-fields"
 					type="text"
 					name="event"
 					value={post.event}
 					placeholder="Event"
 					onChange={textInputChange}
 				/>
-				<input
+                <input
+                    className="input-fields"
 					type="date"
 					name="date"
 					value={post.date}
 					onChange={dateInputChange}
 				/>
-				<input
+                <input
+                    className="input-fields"
 					type="text"
 					name="description"
 					value={post.description}
 					placeholder="Description"
 					onChange={textInputChange}
 				/>
-				<button type="submit" onClick={createEvent}>
-					Create Event
-				</button>
 			</form>
-			<button onClick={() => navigate("/")}>BACK</button>
+			<button className="buttons" onClick={createEvent}>CREATE EVENT</button>
+			<button className="buttons" onClick={() => navigate("events")}>VIEW EVENTS</button>
 		</div>
 	);
 }

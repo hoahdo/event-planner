@@ -69,20 +69,20 @@ function EventPosts() {
 
 	const Events = posts.map((item) => {
 		return (
-			<div key={item._id}>
+			<div key={item._id} className="event-posts-container">
 				<h4>Event: {item.event}</h4>
 				<p>Date: {item.date}</p>
 				<p>Info: {item.description}</p>
-				<button onClick={() => updatePostBtn(item)}>UPDATE</button>
-				<button onClick={() => deleteEvent(item._id)}>DELETE</button>
+				<button className="buttons" onClick={() => updatePostBtn(item)}>UPDATE</button>
+				<button className="buttons" onClick={() => deleteEvent(item._id)}>DELETE</button>
 			</div>
 		);
 	});
 
 	return (
-		<div className=" bg-orange-600 ">
+		<div className="">
 			<h1>Events Page</h1>
-			<button onClick={() => navigate(-1)}>BACK</button>
+			<button className="buttons" onClick={() => navigate(-1)}>BACK</button>
 			{Events}
 			<UpdateModal
 				isModalOpen={isModalOpen}

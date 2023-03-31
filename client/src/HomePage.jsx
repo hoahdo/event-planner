@@ -5,7 +5,9 @@ function HomePage() {
 	return (
 		<div>
 			<h1>Hello</h1>
-			<button onClick={() => navigate("create")}>NEXT</button>
+			<button className="buttons" onClick={() => navigate("create")}>
+				NEXT
+			</button>
 		</div>
 	);
 }
