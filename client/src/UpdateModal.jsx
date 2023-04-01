@@ -25,7 +25,7 @@ function UpdateModal({
 					</Transition.Child>
 
 					<div className="fixed inset-0 overflow-y-auto">
-						<div className="flex min-h-full items-center justify-center p-4 text-center">
+						<div className="flex items-center justify-center min-h-full p-4 text-center">
 							<Transition.Child
 								as={Fragment}
 								enter="ease-out duration-300"
@@ -71,7 +71,7 @@ function UpdateModal({
 										/>
 									</div>
 
-									<div className="mt-4 flex justify-around gap-x-4">
+									<div className="flex justify-around mt-4 gap-x-4">
 										<button
 											type="button"
 											className="buttons grow bg-[#77DD77] text-black"
