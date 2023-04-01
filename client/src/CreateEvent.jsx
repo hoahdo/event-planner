@@ -41,27 +41,26 @@ function CreateEvent() {
 	};
 
 	return (
-		<div>
+		<div className="flex flex-col gap-y-8">
 			<h1>Create Event</h1>
-			{/* <button onClick={() => navigate("/")}>BACK</button> */}
 			<form className="form-container">
-                <input
-                    className="input-fields"
+				<input
+					className="input-fields"
 					type="text"
 					name="event"
 					value={post.event}
 					placeholder="Event"
 					onChange={textInputChange}
 				/>
-                <input
-                    className="input-fields"
+				<input
+					className="input-fields"
 					type="date"
 					name="date"
 					value={post.date}
 					onChange={dateInputChange}
 				/>
-                <input
-                    className="input-fields"
+				<input
+					className="input-fields"
 					type="text"
 					name="description"
 					value={post.description}
@@ -69,8 +68,14 @@ function CreateEvent() {
 					onChange={textInputChange}
 				/>
 			</form>
-			<button className="buttons" onClick={createEvent}>CREATE EVENT</button>
-			<button className="buttons" onClick={() => navigate("events")}>VIEW EVENTS</button>
+			<div className="flex flex-row">
+				<button className="buttons bg-[#1D741B]" onClick={createEvent}>
+					CREATE EVENT
+				</button>
+				<button className="buttons" onClick={() => navigate("events")}>
+					VIEW EVENTS
+				</button>
+			</div>
 		</div>
 	);
 }

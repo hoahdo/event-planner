@@ -38,29 +38,29 @@ function UpdateModal({
 								<Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-[#242424] p-6 text-left align-middle shadow-xl transition-all">
 									<Dialog.Title
 										as="h3"
-										className="text-lg font-medium leading-6 text-white"
+										className="text-xl font-medium leading-6 text-white"
 									>
-										Update Event
+										Edit Event
 									</Dialog.Title>
 									<div className="form-container">
-                                        <input
-                                            className="input-fields"
+										<input
+											className="input-fields"
 											type="text"
 											name="event"
 											value={updatedPost.event ? updatedPost.event : ""}
 											onChange={postEdit}
 											placeholder="Event"
 										/>
-                                        <input
-                                            className="input-fields"
+										<input
+											className="input-fields"
 											type="date"
 											name="date"
 											value={updatedPost.date ? updatedPost.date : ""}
 											onChange={postEdit}
 											placeholder="Date"
 										/>
-                                        <input
-                                            className="input-fields"
+										<input
+											className="input-fields"
 											type="text"
 											name="description"
 											value={
@@ -71,17 +71,17 @@ function UpdateModal({
 										/>
 									</div>
 
-									<div className="mt-4">
+									<div className="mt-4 flex justify-around gap-x-4">
 										<button
 											type="button"
-											className="rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+											className="buttons grow bg-[#77DD77] text-black"
 											onClick={savePostEdit}
 										>
 											Confirm
 										</button>
 										<button
 											type="button"
-											className="rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+											className="buttons grow bg-[#FF6961] text-black"
 											onClick={closeModal}
 										>
 											Cancel
