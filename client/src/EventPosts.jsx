@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import UpdateModal from "./UpdateModal";
@@ -11,6 +11,8 @@ function EventPosts() {
 	const [posts, setPosts] = useState([]);
 	const [updatedPost, setUpdatedPost] = useState({});
 
+	const deleteItemId = useRef("");
+
 	useEffect(() => {
 		console.log(posts);
 		axios
@@ -22,7 +24,8 @@ function EventPosts() {
 			.catch((error) => console.log(error));
 	}, []);
 
-	const openDeleteConfirm = () => {
+	const openDeleteConfirm = (id) => {
+		deleteItemId.current = id;
 		setDeleteOpen(true);
 	};
 
@@ -54,7 +57,7 @@ function EventPosts() {
 	};
 
 	const deleteConfirm = () => {
-		document.getElementById("delete-button").click();
+		deleteEvent();
 		closeDeleteConfirm();
 	};
 
@@ -72,8 +75,8 @@ function EventPosts() {
 		window.location.reload();
 	};
 
-	const deleteEvent = (id) => {
-		// console.log(id);
+	const deleteEvent = () => {
+		const id = deleteItemId.current;
 
 		axios
 			.delete(`http://localhost:3001/delete/${id}`)
@@ -103,16 +106,9 @@ function EventPosts() {
 					</button>
 					<button
 						className="buttons grow bg-[#e7625f]"
-						onClick={openDeleteConfirm}
+						onClick={() => openDeleteConfirm(item._id)}
 					>
 						DELETE
-					</button>
-					<button
-						id="delete-button"
-						hidden={true}
-						onClick={() => deleteEvent(item._id)}
-					>
-						Deprecated DELETE
 					</button>
 				</div>
 			</div>
