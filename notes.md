@@ -1,7 +1,9 @@
 ## Features added:
 * update modal
 * delete confirm modal
-
+* separate models
+* separate routes
+* separate controller logic from routes
 
 ## Features to be added:
 * login page
