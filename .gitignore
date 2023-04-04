@@ -1,5 +1,4 @@
 # Logs
-notes
 logs
 *.log
 npm-debug.log*
@@ -8,6 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+/notes
+.env
 node_modules
 dist
 dist-ssr
