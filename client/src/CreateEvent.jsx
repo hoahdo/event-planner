@@ -3,6 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 
 function CreateEvent() {
+    const apiUrl = import.meta.env.VITE_API_BASE_URL
+
 	const navigate = useNavigate();
 	const [post, setPost] = useState({
 		event: "",
@@ -33,7 +35,7 @@ function CreateEvent() {
 	const createEvent = (event) => {
 		event.preventDefault();
 		axios
-			.post("http://localhost:3001/create", post)
+			.post(`${apiUrl}/create`, post)
 			.then((res) => console.log(res))
 			.catch((error) => console.log(error));
 

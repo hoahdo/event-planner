@@ -5,18 +5,19 @@ import UpdateModal from "./UpdateModal";
 import DeleteModal from "./DeleteModal";
 
 function EventPosts() {
+    const apiUrl = import.meta.env.VITE_API_BASE_URL
+
 	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [deleteOpen, setDeleteOpen] = useState(false);
 	const [posts, setPosts] = useState([]);
 	const [updatedPost, setUpdatedPost] = useState({});
-
 	const deleteItemId = useRef("");
 
 	useEffect(() => {
 		console.log(posts);
 		axios
-			.get("http://localhost:3001/events")
+			.get(`${apiUrl}/events`)
 			.then((res) => {
 				console.log(res);
 				setPosts(res.data);
@@ -76,7 +77,7 @@ function EventPosts() {
 		const id = updatedPost._id;
 
 		axios
-			.put(`http://localhost:3001/update/${id}`, updatedPost)
+			.put(`${apiUrl}/update/${id}`, updatedPost)
 			.then((res) => console.log(res))
 			.catch((error) => console.log(error));
 
@@ -88,7 +89,7 @@ function EventPosts() {
 		const id = deleteItemId.current;
 
 		axios
-			.delete(`http://localhost:3001/delete/${id}`)
+			.delete(`${apiUrl}/delete/${id}`)
 			.then((res) => console.log(res))
 			.catch((error) => console.log(error));
 		window.location.reload();
