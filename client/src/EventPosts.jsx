@@ -42,7 +42,16 @@ function EventPosts() {
 	};
 
 	const updatePostBtn = (item) => {
-		setUpdatedPost(item);
+        const { _id, event, date, description } = item
+        const fixedDate = date.split("T")
+		setUpdatedPost(() => {
+            return {
+                _id: _id,
+                event: event,
+                date: fixedDate[0],
+                description: description
+            };
+		});
 		openModal();
 	};
 
