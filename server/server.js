@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const baseRouter = require("./routes/routes");
-const PORT = 3001;
+const port = process.env.PORT || 3000;
 let mongoUri;
 let svrLoc;
 
@@ -26,7 +26,7 @@ mongoose
 	.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
 		console.log(`Database connected on ${svrLoc} server...`);
-		app.listen(PORT);
-		console.log(`Server listening on port ${PORT}...`);
+		app.listen(port);
+		console.log(`Server listening on port ${port}...`);
 	})
 	.catch((error) => console.log(error));
