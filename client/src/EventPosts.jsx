@@ -43,16 +43,17 @@ function EventPosts() {
 	};
 
 	const updatePostBtn = (item) => {
-        const { _id, event, date, description } = item
-        const fixedDate = date.split("T")
-		setUpdatedPost(() => {
-            return {
-                _id: _id,
-                event: event,
-                date: fixedDate[0],
-                description: description
-            };
-		});
+        // const { _id, event, date, description } = item
+        // const fixedDate = date.split("T")
+		// setUpdatedPost(() => {
+        //     return {
+        //         _id: _id,
+        //         event: event,
+        //         date: fixedDate[0],
+        //         description: description
+        //     };
+		// });
+        setUpdatedPost(item)
 		openModal();
 	};
 
