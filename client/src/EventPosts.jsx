@@ -15,17 +15,18 @@ function EventPosts() {
 	const deleteItemId = useRef("");
 
 	useEffect(() => {
-		async function fetchEvents() {
-			try {
-				const res = await axios.get(`${apiUrl}/events`);
-				const data = res.data;
-				setPosts(data);
-			} catch (error) {
-				console.log(error);
-			}
-		}
 		fetchEvents();
 	}, []);
+
+	async function fetchEvents() {
+		try {
+			const res = await axios.get(`${apiUrl}/events`);
+			const data = res.data;
+			setPosts(data);
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
 	const openDeleteConfirm = (id) => {
 		deleteItemId.current = id;
@@ -69,8 +70,8 @@ function EventPosts() {
 		const id = updatedPost._id;
 		try {
 			await axios.put(`${apiUrl}/update/${id}`, updatedPost);
+			await fetchEvents();
 			closeModal();
-			window.location.reload();
 		} catch (error) {
 			console.log(error);
 		}
@@ -80,7 +81,7 @@ function EventPosts() {
 		const id = deleteItemId.current;
 		try {
 			await axios.delete(`${apiUrl}/delete/${id}`);
-			window.location.reload();
+			await fetchEvents();
 		} catch (error) {
 			console.log(error);
 		}
