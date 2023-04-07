@@ -5,7 +5,7 @@ import UpdateModal from "./UpdateModal";
 import DeleteModal from "./DeleteModal";
 
 function EventPosts() {
-    const apiUrl = import.meta.env.VITE_API_BASE_URL
+	const apiUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
 	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,11 +15,10 @@ function EventPosts() {
 	const deleteItemId = useRef("");
 
 	useEffect(() => {
-		console.log(posts);
+		// console.log(posts);
 		axios
 			.get(`${apiUrl}/events`)
 			.then((res) => {
-				console.log(res);
 				setPosts(res.data);
 			})
 			.catch((error) => console.log(error));
@@ -43,17 +42,17 @@ function EventPosts() {
 	};
 
 	const updatePostBtn = (item) => {
-        // const { _id, event, date, description } = item
-        // const fixedDate = date.split("T")
+		// const { _id, event, date, description } = item
+		// const fixedDate = date.split("T")
 		// setUpdatedPost(() => {
-        //     return {
-        //         _id: _id,
-        //         event: event,
-        //         date: fixedDate[0],
-        //         description: description
-        //     };
+		//     return {
+		//         _id: _id,
+		//         event: event,
+		//         date: fixedDate[0],
+		//         description: description
+		//     };
 		// });
-        setUpdatedPost(item)
+		setUpdatedPost(item);
 		openModal();
 	};
 
@@ -73,13 +72,15 @@ function EventPosts() {
 	};
 
 	const savePostEdit = () => {
-		console.log(updatedPost);
-		console.log(updatedPost._id);
+		// console.log(updatedPost);
+		// console.log(updatedPost._id);
 		const id = updatedPost._id;
 
 		axios
 			.put(`${apiUrl}/update/${id}`, updatedPost)
-			.then((res) => console.log(res))
+			.then((res) => {
+				// console.log(res);
+			})
 			.catch((error) => console.log(error));
 
 		closeModal();
@@ -91,7 +92,9 @@ function EventPosts() {
 
 		axios
 			.delete(`${apiUrl}/delete/${id}`)
-			.then((res) => console.log(res))
+			.then((res) => {
+				// console.log(res);
+			})
 			.catch((error) => console.log(error));
 		window.location.reload();
 	};
