@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import UpdateModal from "./UpdateModal";
 import DeleteModal from "./DeleteModal";
+import axiosClient from "./apis/apiClient";
 
 function EventPosts() {
-	const apiUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
 	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +19,7 @@ function EventPosts() {
 
 	async function fetchEvents() {
 		try {
-			const res = await axios.get(`${apiUrl}/events`);
+			const res = await axiosClient.get(`/events`);
 			const data = res.data;
 			setPosts(data);
 		} catch (error) {
@@ -69,7 +68,7 @@ function EventPosts() {
 	const savePostEdit = async () => {
 		const id = updatedPost._id;
 		try {
-			await axios.put(`${apiUrl}/update/${id}`, updatedPost);
+			await axiosClient.put(`/update/${id}`, updatedPost);
 			await fetchEvents();
 			closeModal();
 		} catch (error) {
@@ -80,7 +79,7 @@ function EventPosts() {
 	const deleteEvent = async () => {
 		const id = deleteItemId.current;
 		try {
-			await axios.delete(`${apiUrl}/delete/${id}`);
+			await axiosClient.delete(`/delete/${id}`);
 			await fetchEvents();
 		} catch (error) {
 			console.log(error);
