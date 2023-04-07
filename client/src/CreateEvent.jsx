@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import axiosClient from "./apis/apiClient";
 
 function CreateEvent() {
 	const apiUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
@@ -32,17 +32,26 @@ function CreateEvent() {
 		});
 	};
 
-	const createEvent = (event) => {
-		event.preventDefault();
-		axios
-			.post(`${apiUrl}/create`, post)
-			.then((res) => {
-				// console.log(res);
-			})
-			.catch((error) => console.log(error));
-
-		navigate("events");
+	const createEvent = async (event) => {
+		try {
+			event.preventDefault();
+			await axiosClient.post(`/create`, post);
+			navigate("events");
+		} catch (error) {
+			console.log(error);
+		}
 	};
+	// const createEvent = (event) => {
+	// 	event.preventDefault();
+	// 	axios
+	// 		.post(`${apiUrl}/create`, post)
+	// 		.then((res) => {
+	// 			// console.log(res);
+	// 		})
+	// 		.catch((error) => console.log(error));
+
+	// 	navigate("events");
+	// };
 
 	return (
 		<div className="flex flex-col gap-y-8">

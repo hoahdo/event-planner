@@ -15,13 +15,16 @@ function EventPosts() {
 	const deleteItemId = useRef("");
 
 	useEffect(() => {
-		// console.log(posts);
-		axios
-			.get(`${apiUrl}/events`)
-			.then((res) => {
-				setPosts(res.data);
-			})
-			.catch((error) => console.log(error));
+		async function fetchEvents() {
+			try {
+				const res = await axios.get(`${apiUrl}/events`);
+				const data = res.data;
+				setPosts(data);
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		fetchEvents();
 	}, []);
 
 	const openDeleteConfirm = (id) => {

@@ -1,42 +1,50 @@
 const Post = require("../models/PostModel");
 
-const getEventPosts = (req, res) => {
-	Post.find()
-		.then((items) => res.json(items))
-		.catch((error) => console.log(error));
+const getEventPosts = async (req, res) => {
+	try {
+		const data = await Post.find();
+		res.json(data);
+	} catch (error) {
+		console.log(error);
+	}
 };
 
-const createEventPosts = (req, res) => {
-	// console.log(req.body);
-	Post.create({
-		event: req.body.event,
-		date: req.body.date,
-		description: req.body.description,
-	})
-		.then() //(doc) => console.log(doc)
-		.catch((error) => console.log(error));
-};
-
-const deleteEventPosts = (req, res) => {
-	// console.log(req.params);
-	Post.findByIdAndDelete({ _id: req.params.id })
-		.then()
-		.catch((error) => console.log(error));
-};
-
-const updateEventPosts = (req, res) => {
-	console.log(req.params);
-	console.log(req.body);
-	Post.findByIdAndUpdate(
-		{ _id: req.params.id },
-		{
+const createEventPosts = async (req, res) => {
+	try {
+		await Post.create({
 			event: req.body.event,
 			date: req.body.date,
 			description: req.body.description,
-		}
-	)
-		.then()
-		.catch();
+		});
+		res.send("Event was created.");
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+const deleteEventPosts = async (req, res) => {
+	try {
+		await Post.findByIdAndDelete({ _id: req.params.id });
+		res.send("Event was deleted.");
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+const updateEventPosts = (req, res) => {
+	try {
+		Post.findByIdAndUpdate(
+			{ _id: req.params.id },
+			{
+				event: req.body.event,
+				date: req.body.date,
+				description: req.body.description,
+			}
+		);
+		res.send("Event was updated.");
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 module.exports = {
