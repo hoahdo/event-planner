@@ -3,7 +3,6 @@ import { useState } from "react";
 import axiosClient from "./apis/apiClient";
 
 function CreateEvent() {
-	const apiUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
 	const navigate = useNavigate();
 	const [post, setPost] = useState({
@@ -41,17 +40,6 @@ function CreateEvent() {
 			console.log(error);
 		}
 	};
-	// const createEvent = (event) => {
-	// 	event.preventDefault();
-	// 	axios
-	// 		.post(`${apiUrl}/create`, post)
-	// 		.then((res) => {
-	// 			// console.log(res);
-	// 		})
-	// 		.catch((error) => console.log(error));
-
-	// 	navigate("events");
-	// };
 
 	return (
 		<div className="flex flex-col gap-y-8">

@@ -45,16 +45,7 @@ function EventPosts() {
 	};
 
 	const updatePostBtn = (item) => {
-		// const { _id, event, date, description } = item
-		// const fixedDate = date.split("T")
-		// setUpdatedPost(() => {
-		//     return {
-		//         _id: _id,
-		//         event: event,
-		//         date: fixedDate[0],
-		//         description: description
-		//     };
-		// });
+		console.log(item);
 		setUpdatedPost(item);
 		openModal();
 	};
@@ -74,32 +65,25 @@ function EventPosts() {
 		closeDeleteConfirm();
 	};
 
-	const savePostEdit = () => {
-		// console.log(updatedPost);
-		// console.log(updatedPost._id);
+	const savePostEdit = async () => {
 		const id = updatedPost._id;
-
-		axios
-			.put(`${apiUrl}/update/${id}`, updatedPost)
-			.then((res) => {
-				// console.log(res);
-			})
-			.catch((error) => console.log(error));
-
-		closeModal();
-		window.location.reload();
+		try {
+			await axios.put(`${apiUrl}/update/${id}`, updatedPost);
+			closeModal();
+			window.location.reload();
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
-	const deleteEvent = () => {
+	const deleteEvent = async () => {
 		const id = deleteItemId.current;
-
-		axios
-			.delete(`${apiUrl}/delete/${id}`)
-			.then((res) => {
-				// console.log(res);
-			})
-			.catch((error) => console.log(error));
-		window.location.reload();
+		try {
+			await axios.delete(`${apiUrl}/delete/${id}`);
+			window.location.reload();
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const Events = posts.map((item) => {

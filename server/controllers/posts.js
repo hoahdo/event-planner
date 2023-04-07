@@ -31,9 +31,9 @@ const deleteEventPosts = async (req, res) => {
 	}
 };
 
-const updateEventPosts = (req, res) => {
+const updateEventPosts = async (req, res) => {
 	try {
-		Post.findByIdAndUpdate(
+		await Post.findByIdAndUpdate(
 			{ _id: req.params.id },
 			{
 				event: req.body.event,
