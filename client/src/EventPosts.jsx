@@ -60,8 +60,8 @@ function EventPosts() {
 		});
 	};
 
-	const deleteConfirm = () => {
-		deleteEvent();
+	const deleteConfirm = async () => {
+		await deleteEvent();
 		closeDeleteConfirm();
 	};
 
