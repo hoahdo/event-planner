@@ -2,10 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import UpdateModal from "./UpdateModal";
 import DeleteModal from "./DeleteModal";
-import axiosClient from "./apis/apiClient";
+import * as EventsApi from "./apis/lib/events";
 
 function EventPosts() {
-
 	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [deleteOpen, setDeleteOpen] = useState(false);
@@ -19,7 +18,7 @@ function EventPosts() {
 
 	async function fetchEvents() {
 		try {
-			const res = await axiosClient.get(`/events`);
+			const res = await EventsApi.getEvents();
 			const data = res.data;
 			setPosts(data);
 		} catch (error) {
@@ -45,7 +44,6 @@ function EventPosts() {
 	};
 
 	const updatePostBtn = (item) => {
-		console.log(item);
 		setUpdatedPost(item);
 		openModal();
 	};
@@ -68,7 +66,7 @@ function EventPosts() {
 	const savePostEdit = async () => {
 		const id = updatedPost._id;
 		try {
-			await axiosClient.put(`/update/${id}`, updatedPost);
+			await EventsApi.updateEvents(id, updatedPost);
 			await fetchEvents();
 			closeModal();
 		} catch (error) {
@@ -79,7 +77,7 @@ function EventPosts() {
 	const deleteEvent = async () => {
 		const id = deleteItemId.current;
 		try {
-			await axiosClient.delete(`/delete/${id}`);
+			await EventsApi.deleteEvents(id);
 			await fetchEvents();
 		} catch (error) {
 			console.log(error);

@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axiosClient from "./apis/apiClient";
+import * as EventsApi from "./apis/lib/events";
 
 function CreateEvent() {
-
 	const navigate = useNavigate();
 	const [post, setPost] = useState({
 		event: "",
@@ -34,7 +33,7 @@ function CreateEvent() {
 	const createEvent = async (event) => {
 		try {
 			event.preventDefault();
-			await axiosClient.post(`/create`, post);
+			await EventsApi.postEvents(post);
 			navigate("events");
 		} catch (error) {
 			console.log(error);
