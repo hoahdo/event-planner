@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 function HomePage() {
 	const navigate = useNavigate();
 	return (
-		<div>
-			<h1>Hello</h1>
+		<div className="flex flex-col gap-y-8">
+			<h1>Event Planner</h1>
 			<button className="buttons" onClick={() => navigate("create")}>
-				NEXT
+				CREATE AN EVENT
 			</button>
 		</div>
 	);
