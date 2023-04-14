@@ -2,20 +2,20 @@
 <!--- Title Section --->
 
 <div align="center">
-	<h1>Stock Checker</h1>
+	<h1>Event Planner</h1>
 	<a href="https://capable-mermaid-1f46e1.netlify.app/">Live App Link</a> &#x2022 <a href="https://github.com/hoahdo/event-planner">GitHub Repo Link</a>
 </div>
 
 <br/>
 <p align="center">
-img goes here
-  <img src="" width="700"/>
+  <img src="https://user-images.githubusercontent.com/94433620/232168267-eb71e587-0611-4b10-b9a6-3e442be90fbd.png" width=""/>
 </p>
+
 
 <!--- About Section --->
 
 ## About
-This web application was created to allow users to organize events by creating postings for them. Users are able to create a posting detailing the name of the event, when its going to take place, and an optional description of the event. They are also then able to view all the event postings in one place as well as being able to update the event should any changes arise or remove the posting completely.
+This web application was created to allow users to organize events by creating postings for them. Users are able to create a posting detailing the name of the event, when its going to take place, and an optional description of the event. They are also then able to view all the event postings in one place as well as be able to update the event should any changes arise or remove the posting completely.
 
 ### Features
 
@@ -49,6 +49,7 @@ This web application was created to allow users to organize events by creating p
   <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E"/>
   <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white"/>
   <img src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white"/>
+
 
 <!--- Installation & Setup Section --->
 
@@ -85,13 +86,32 @@ You will need `npm` and `vite` installed globally on your machine.
     npm start
     ```
 
-  
 
 <!--- Usage Section --->
 
 ## Usage
 
+### View all events
 
+<img src="https://user-images.githubusercontent.com/94433620/232168500-507dfe59-1178-4229-890c-28a4462e1a06.png" width="" />
+
+### Create a new event post
+
+<img src="https://user-images.githubusercontent.com/94433620/232168587-0050922f-acbb-4690-b6c4-a0160057f37e.png" width="" />
+
+<img src="https://user-images.githubusercontent.com/94433620/232168835-25bb4fe8-3931-40f5-b2a0-319d6d979a44.png" width="" />
+
+### Update an event post
+
+<img src="https://user-images.githubusercontent.com/94433620/232168738-193c431c-2852-473e-82db-8cfb18cbcc96.png" width="" />
+
+<img src="https://user-images.githubusercontent.com/94433620/232168762-88e869a8-484d-4873-9761-8884f2f34f88.png" width="" />
+
+### Delete an event post
+
+<img src="https://user-images.githubusercontent.com/94433620/232168885-f0046a30-4149-4e48-b8d7-485c20af3714.png" width="" />
+
+<img src="https://user-images.githubusercontent.com/94433620/232168901-24e342d1-fb72-461e-abee-edc6984dbc14.png" width="" />
 
 
 <!--- Contributing Section--->
@@ -123,6 +143,7 @@ You will need `npm` and `vite` installed globally on your machine.
 * Update modal date field not populated by previously set date
 * Date format not consistent
 
+
 <!--- Reflection Section --->
 
 ## Reflection
@@ -148,6 +169,7 @@ Things I learned:
 * https://www.youtube.com/watch?v=fsTGQi-SvSg
 * https://www.youtube.com/watch?v=p7J7u_9_3FI
 * https://docs.cyclic.sh/troubleshooting/main-entry-point-does-not-exist
+
 
 <!--- License Section --->
 
