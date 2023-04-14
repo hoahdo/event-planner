@@ -117,7 +117,7 @@ function EventPosts() {
 	return (
 		<div className="flex flex-col gap-y-8">
 			<h1>Events Page</h1>
-			<button className="self-center w-60 buttons" onClick={() => navigate(-1)}>
+			<button className="self-center w-60 buttons" onClick={() => navigate("create")}>
 				ADD NEW EVENT
 			</button>
 			<div className="event-posts-box">{Events}</div>

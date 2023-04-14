@@ -5,8 +5,8 @@ function HomePage() {
 	return (
 		<div className="flex flex-col gap-y-8">
 			<h1>Event Planner</h1>
-			<button className="buttons" onClick={() => navigate("create")}>
-				CREATE AN EVENT
+			<button className="buttons" onClick={() => navigate("events")}>
+				VIEW EVENTS
 			</button>
 		</div>
 	);

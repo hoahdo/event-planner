@@ -34,7 +34,7 @@ function CreateEvent() {
 		try {
 			event.preventDefault();
 			await EventsApi.postEvents(post);
-			navigate("events");
+			navigate(-1);
 		} catch (error) {
 			console.log(error);
 		}
@@ -72,7 +72,7 @@ function CreateEvent() {
 				<button className="buttons bg-[#1D741B]" onClick={createEvent}>
 					CREATE EVENT
 				</button>
-				<button className="buttons" onClick={() => navigate("events")}>
+				<button className="buttons" onClick={() => navigate(-1)}>
 					VIEW EVENTS
 				</button>
 			</div>
